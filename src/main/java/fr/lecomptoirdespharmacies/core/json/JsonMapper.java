@@ -1,8 +1,7 @@
 package fr.lecomptoirdespharmacies.core.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.lecomptoirdespharmacies.entity.http.Jsonable;
+import fr.lecomptoirdespharmacies.entity.Jsonable;
 
 public class JsonMapper extends Json {
 

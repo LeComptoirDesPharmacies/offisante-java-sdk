@@ -14,7 +14,8 @@ public class OffisanteApi {
 
     public OffisanteApi(UserCredentials credentials) {
         configuration = new Configuration(credentials, false);
-        tokenManager = new TokenManager(this);
+        authApi = new AuthApi(this);
+        tokenManager = new TokenManager(authApi);
     }
 
     public OffisanteApi(UserCredentials credentials, boolean isProduction) {
@@ -22,7 +23,8 @@ public class OffisanteApi {
                 credentials,
                 isProduction
         );
-        tokenManager = new TokenManager(this);
+        authApi = new AuthApi(this);
+        tokenManager = new TokenManager(authApi);
     }
 
     /**
@@ -31,6 +33,9 @@ public class OffisanteApi {
     protected Configuration configuration;
 
     /** APIs **/
+    private AuthApi authApi;
+
+    /** Manager **/
     private TokenManager tokenManager;
 
 }

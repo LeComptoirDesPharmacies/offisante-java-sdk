@@ -1,8 +1,8 @@
 package fr.lecomptoirdespharmacies.core.api;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
-import fr.lecomptoirdespharmacies.core.domain.CreateUri;
-import fr.lecomptoirdespharmacies.core.domain.Uri;
+import fr.lecomptoirdespharmacies.entity.http.Builder.CreateUri;
+import fr.lecomptoirdespharmacies.entity.http.Uri;
 import fr.lecomptoirdespharmacies.entity.http.Token;
 import lombok.NonNull;
 

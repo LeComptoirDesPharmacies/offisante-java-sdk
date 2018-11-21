@@ -1,7 +1,8 @@
-package fr.lecomptoirdespharmacies.core.domain;
+package fr.lecomptoirdespharmacies.entity.http.Builder;
+
+import fr.lecomptoirdespharmacies.entity.http.Uri;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class CreateUri {
 
@@ -11,15 +12,15 @@ public class CreateUri {
      * Contains url optional queries
      * Example : ?key1=value1&key2=value1
      */
-    private HashMap<String, List<String>> queries = new HashMap<>();
+    private HashMap<String, String> queries = new HashMap<>();
 
     public CreateUri fromUri(String uri){
         this.uri = uri;
         return this;
     }
 
-    public CreateUri withQueryParams(HashMap<String, List<String>> queries){
-        this.queries = queries;
+    public CreateUri addQueryParams(String key, String value){
+        queries.putIfAbsent(key, value);
         return this;
     }
 

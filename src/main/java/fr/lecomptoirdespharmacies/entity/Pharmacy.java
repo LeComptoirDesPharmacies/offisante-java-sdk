@@ -6,7 +6,7 @@ import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
-public class Pharmacie extends BaseEntity {
+public class Pharmacy extends BaseEntity {
     @JsonProperty("cip")
     String cip;
 }

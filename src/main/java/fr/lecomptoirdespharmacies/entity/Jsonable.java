@@ -1,4 +1,4 @@
-package fr.lecomptoirdespharmacies.entity.http;
+package fr.lecomptoirdespharmacies.entity;
 
 import fr.lecomptoirdespharmacies.core.json.JsonMapper;
 

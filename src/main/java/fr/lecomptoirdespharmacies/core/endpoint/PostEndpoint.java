@@ -1,7 +1,7 @@
 package fr.lecomptoirdespharmacies.core.endpoint;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
-import fr.lecomptoirdespharmacies.core.domain.Uri;
+import fr.lecomptoirdespharmacies.entity.http.Uri;
 import fr.lecomptoirdespharmacies.core.json.JsonParser;
 import fr.lecomptoirdespharmacies.core.util.HttpRequest;
 import fr.lecomptoirdespharmacies.core.util.HttpRequestor;

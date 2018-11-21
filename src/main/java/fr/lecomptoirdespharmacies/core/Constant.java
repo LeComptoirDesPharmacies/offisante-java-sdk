@@ -11,4 +11,8 @@ public class Constant {
     // AUTH
     public static final String AUTH_URI = "/1/auth";
 
+
+    /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
+    public static final String HEADER_AUTHORIZATION = "authorization";
+
 }

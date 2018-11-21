@@ -1,7 +1,7 @@
 package fr.lecomptoirdespharmacies.core.util;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
-import fr.lecomptoirdespharmacies.core.domain.Uri;
+import fr.lecomptoirdespharmacies.entity.http.Uri;
 import lombok.NonNull;
 
 public class UrlUtil {

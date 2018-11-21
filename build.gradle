@@ -19,6 +19,7 @@ dependencies {
     compile group: 'joda-time', name: 'joda-time', version: '2.10.1'
     compile group:'com.squareup.okhttp3', name: 'okhttp', version:'3.12.0'
 
+    testCompile group:'org.mockito', name:'mockito-core', version:'2.+'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.2.0'
 
     compileOnly group: 'org.projectlombok', name:'lombok', version:'1.18.4'
@@ -27,6 +28,7 @@ dependencies {
 
     deployerJars group:'ar.com.synergian', name:'wagon-git', version:'0.2.5'
 }
+
 uploadArchives {
     configuration = configurations.archives
     repositories.mavenDeployer {
@@ -71,6 +73,7 @@ uploadArchives {
 
 allprojects {
     repositories {
+        jcenter()
         mavenCentral()
         maven { url "https://raw.github.com/synergian/wagon-git/releases" }
     }

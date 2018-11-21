@@ -4,9 +4,10 @@ import fr.lecomptoirdespharmacies.OffisanteApi;
 import fr.lecomptoirdespharmacies.core.api.AuthApi;
 import fr.lecomptoirdespharmacies.entity.http.Token;
 import lombok.NonNull;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import static fr.lecomptoirdespharmacies.core.Constant.HEADER_AUTHORIZATION;
 
 public class TokenManager {
 
@@ -14,11 +15,11 @@ public class TokenManager {
 
     private final AuthApi authApi;
 
-    public TokenManager(@NonNull OffisanteApi api) {
-        this.authApi = new AuthApi(api);
+    public TokenManager(@NonNull AuthApi api){
+        this.authApi = api;
     }
 
-    private Token getToken(){
+    public Token getToken(){
         if(isValid()) return token;
         token = authApi.generateToken();
         return token;
@@ -32,8 +33,22 @@ public class TokenManager {
 
     public Map<String, String> getAuthorizationHeader(){
         Map<String, String> map = new HashMap<String, String>();
-        map.put("Authorization",getToken().getValue());
+        map.put(HEADER_AUTHORIZATION, getToken().getValue());
         return map;
     }
 
+    public void updateRemaining(int remaining){
+        token = new Token(
+                token.getCode(),
+                token.getNext(),
+                remaining,
+                token.getVersion(),
+                token.getValue()
+        );
+    }
+
+    // ONLY for test purpose !
+    public void setToken(Token token) {
+        this.token = token;
+    }
 }

@@ -4,10 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.lecomptoirdespharmacies.core.json.deserializer.LocalDateTimeDeserializer;
+import fr.lecomptoirdespharmacies.entity.Jsonable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.joda.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Body implements Jsonable {
 
@@ -23,4 +28,5 @@ public abstract class Body implements Jsonable {
 
     @JsonProperty("version")
     String version;
+
 }
