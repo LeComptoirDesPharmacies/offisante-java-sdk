@@ -1,4 +1,4 @@
-package fr.lecomptoirdespharmacies.entity.http.Builder;
+package fr.lecomptoirdespharmacies.entity.http.builder;
 
 import fr.lecomptoirdespharmacies.entity.http.Uri;
 

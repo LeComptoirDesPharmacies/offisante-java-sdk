@@ -4,13 +4,16 @@ import okhttp3.*;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Class who execute HTTP request
+ */
 public class HttpRequestor implements HttpRequest {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private OkHttpClient client = new OkHttpClient();
 
-
+    //TODO: better management of error
     @Override
     public String post(String url, String body, Map<String, String> header){
         // Set Body

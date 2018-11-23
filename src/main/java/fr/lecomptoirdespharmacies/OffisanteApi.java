@@ -2,10 +2,15 @@ package fr.lecomptoirdespharmacies;
 
 import fr.lecomptoirdespharmacies.core.Configuration;
 import fr.lecomptoirdespharmacies.core.api.AuthApi;
+import fr.lecomptoirdespharmacies.core.api.OverstockApi;
+import fr.lecomptoirdespharmacies.core.manager.ReflectionManager;
 import fr.lecomptoirdespharmacies.core.manager.TokenManager;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
 import lombok.Getter;
 
+import static fr.lecomptoirdespharmacies.core.Constant.ENTITY_PACKAGE_NAME;
+
+//TODO: Logging module ??
 /**
  * Main class API
  */
@@ -14,8 +19,7 @@ public class OffisanteApi {
 
     public OffisanteApi(UserCredentials credentials) {
         configuration = new Configuration(credentials, false);
-        authApi = new AuthApi(this);
-        tokenManager = new TokenManager(authApi);
+        initialise();
     }
 
     public OffisanteApi(UserCredentials credentials, boolean isProduction) {
@@ -23,19 +27,31 @@ public class OffisanteApi {
                 credentials,
                 isProduction
         );
+        initialise();
+    }
+
+    private void initApi(){
         authApi = new AuthApi(this);
+        overstockApi = new OverstockApi(this);
+    }
+
+    private void initialise(){
+        initApi();
         tokenManager = new TokenManager(authApi);
     }
 
     /**
      * Configuration class
      */
-    protected Configuration configuration;
+    protected final Configuration configuration;
 
     /** APIs **/
     private AuthApi authApi;
+    private OverstockApi overstockApi;
 
     /** Manager **/
     private TokenManager tokenManager;
+    private ReflectionManager reflectionManager = new ReflectionManager(ENTITY_PACKAGE_NAME);
+
 
 }

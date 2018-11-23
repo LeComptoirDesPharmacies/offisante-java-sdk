@@ -1,5 +1,6 @@
 package fr.lecomptoirdespharmacies.entity.http;
 
+import lombok.NonNull;
 import lombok.Value;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -8,7 +9,7 @@ import java.util.stream.Collector;
 @Value
 public class Uri {
 
-    private final String uri;
+    private final @NonNull String uri;
 
     private final HashMap<String, String> queries;
 

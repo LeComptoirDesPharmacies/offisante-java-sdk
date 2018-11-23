@@ -1,15 +1,27 @@
 package fr.lecomptoirdespharmacies.core.json;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.lecomptoirdespharmacies.entity.http.Body;
 
 import java.io.IOException;
 
+/**
+ * Class to parse Json to Object
+ */
 public class JsonParser extends Json{
 
-    public <T extends Body> T fromJson(String json, Class<T> responseCls){
+    private final String json;
+
+    private final ObjectMapper mapper;
+
+    public JsonParser(String json, ObjectMapper mapper) {
+        this.json = json;
+        this.mapper = mapper;
+    }
+
+    public <T extends Body> T parseJsonTo(Class<T> responseCls){
         try {
             return mapper.readValue(json, responseCls);
         } catch (JsonParseException jpe){

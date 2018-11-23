@@ -11,10 +11,12 @@ import org.joda.time.format.DateTimeFormatter;
 import java.io.IOException;
 import java.util.Locale;
 
+import static fr.lecomptoirdespharmacies.core.Constant.DEFAULT_DATE_PATTERN;
+
 public class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
     @Override
     public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("EEE, dd MMM yyyy HH:mm:ss Z").withLocale(Locale.US);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern(DEFAULT_DATE_PATTERN).withLocale(Locale.US);
         return LocalDateTime.parse(p.getText(), formatter);
     }
 }

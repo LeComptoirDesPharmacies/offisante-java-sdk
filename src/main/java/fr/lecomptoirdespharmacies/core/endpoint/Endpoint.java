@@ -1,13 +1,38 @@
 package fr.lecomptoirdespharmacies.core.endpoint;
 
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import fr.lecomptoirdespharmacies.OffisanteApi;
+import fr.lecomptoirdespharmacies.core.json.deserializer.ResponseResultDeserializer;
+import fr.lecomptoirdespharmacies.entity.http.RequestBody;
 import fr.lecomptoirdespharmacies.entity.http.Uri;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
 import fr.lecomptoirdespharmacies.entity.http.Body;
+import lombok.NonNull;
 
 public interface Endpoint {
 
-    <T extends Body> T securePost(OffisanteApi api, Uri uri, T body, Class<T> responseCls);
+    /**
+     *                      Use Secure post to add Token in request
+     * @param api           Offisante APi
+     * @param uri           Uri with parameters
+     * @param body          Content of the request
+     * @param responseCls   Class to parse json in
+     * @param deserializer  Json deserializer
+     * @param <T>           Class that extend body
+     * @return              Response casted in response class
+     */
+    <T extends Body> T securePost(@NonNull OffisanteApi api, @NonNull Uri uri,
+                                  @NonNull RequestBody body, @NonNull Class<T> responseCls, ResponseResultDeserializer deserializer);
 
-    <T extends Body> T requestToken(OffisanteApi api, Uri uri, UserCredentials body, Class<T> responseCls);
+    /**
+     *                      Request token from Offisante API
+     * @param api           Offisante APi
+     * @param uri           Uri with parameters
+     * @param body          Content of the request
+     * @param responseCls   Class to parse json in
+     * @param <T>           Class that extend body
+     * @return              Response casted in response class
+     */
+    <T extends Body> T requestToken(@NonNull OffisanteApi api, @NonNull Uri uri,
+                                    @NonNull UserCredentials body, @NonNull Class<T> responseCls);
 }

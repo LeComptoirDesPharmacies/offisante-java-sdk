@@ -2,11 +2,9 @@ package fr.lecomptoirdespharmacies.core.util;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
-import fr.lecomptoirdespharmacies.entity.http.Builder.CreateUri;
+import fr.lecomptoirdespharmacies.entity.http.builder.CreateUri;
 import fr.lecomptoirdespharmacies.entity.http.Uri;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 
 import static fr.lecomptoirdespharmacies.core.Constant.DEV_BASE_URL;
 import static fr.lecomptoirdespharmacies.core.Constant.PRODUCTION_BASE_URL;

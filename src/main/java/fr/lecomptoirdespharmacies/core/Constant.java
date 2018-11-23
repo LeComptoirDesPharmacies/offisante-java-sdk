@@ -11,8 +11,16 @@ public class Constant {
     // AUTH
     public static final String AUTH_URI = "/1/auth";
 
+    // Api
+    public static final String OVERSTOCK_API = "/1/dw/overstock";
+
 
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
-    public static final String HEADER_AUTHORIZATION = "authorization";
+    public static final String HEADER_AUTHORIZATION = "Authorization";
+
+    /** ~~~~~~~~~~~~~~~ PACKAGE ~~~~~~~~~~~~~~~ **/
+    public static final String ENTITY_PACKAGE_NAME = "fr.lecomptoirdespharmacies.entity";
+
+    public static final String DEFAULT_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
 
 }
