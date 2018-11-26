@@ -2,6 +2,7 @@ package fr.lecomptoirdespharmacies.core.manager;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
 import fr.lecomptoirdespharmacies.core.api.AuthApi;
+import fr.lecomptoirdespharmacies.entity.http.Body;
 import fr.lecomptoirdespharmacies.entity.http.Token;
 import lombok.NonNull;
 import java.util.HashMap;
@@ -55,16 +56,18 @@ public class TokenManager {
     /**
      *                      Update remaining use of the token and generate a new one with
      *                      current remaining
-     * @param remaining     Current remaining
+     * @param response      Request response
      */
-    public void updateRemaining(int remaining){
-        token = new Token(
-                token.getCode(),
-                token.getNext(),
-                remaining,
-                token.getVersion(),
-                token.getValue()
-        );
+    public <T extends Body> void updateRemaining(T response){
+        if(response.getRemaining() != null) {
+            token = new Token(
+                    token.getCode(),
+                    token.getNext(),
+                    response.getRemaining(),
+                    token.getVersion(),
+                    token.getValue()
+            );
+        }
     }
 
     /**

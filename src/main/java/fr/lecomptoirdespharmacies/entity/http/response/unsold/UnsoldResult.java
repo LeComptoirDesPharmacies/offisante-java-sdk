@@ -1,8 +1,7 @@
-package fr.lecomptoirdespharmacies.entity.http.response.overstock;
+package fr.lecomptoirdespharmacies.entity.http.response.unsold;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.lecomptoirdespharmacies.core.json.deserializer.PropertyRegister;
 import fr.lecomptoirdespharmacies.entity.http.response.ResponseResult;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -19,8 +18,7 @@ import static fr.lecomptoirdespharmacies.core.Constant.JSON_PRODUCTS_KEY;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-@PropertyRegister(key = JSON_PRODUCTS_KEY)
-public class OverstockResponseResult extends ResponseResult {
+public class UnsoldResult extends ResponseResult {
     @JsonProperty(JSON_PRODUCTS_KEY)
-    private List<OverstockProduct> products;
+    private List<UnsoldProduct> products;
 }

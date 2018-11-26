@@ -16,13 +16,10 @@ public class Constant {
     public static final String UNSOLD_API = "/1/dw/unsold";
     public static final String STOCK_API = "/1/dw/stock";
 
-
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
     public static final String HEADER_AUTHORIZATION = "Authorization";
 
-    /** ~~~~~~~~~~~~~~~ PACKAGE ~~~~~~~~~~~~~~~ **/
-    public static final String ENTITY_PACKAGE_NAME = "fr.lecomptoirdespharmacies.entity";
-
+    /** ~~~~~~~~~~~~~~~ DATE PATTERNS ~~~~~~~~~~~~~~~ **/
     public static final String DEFAULT_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
     public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 

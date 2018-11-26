@@ -1,8 +1,6 @@
 package fr.lecomptoirdespharmacies.core.endpoint;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import fr.lecomptoirdespharmacies.OffisanteApi;
-import fr.lecomptoirdespharmacies.core.json.deserializer.ResponseResultDeserializer;
 import fr.lecomptoirdespharmacies.entity.http.RequestBody;
 import fr.lecomptoirdespharmacies.entity.http.Uri;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
@@ -17,12 +15,11 @@ public interface Endpoint {
      * @param uri           Uri with parameters
      * @param body          Content of the request
      * @param responseCls   Class to parse json in
-     * @param deserializer  Json deserializer
      * @param <T>           Class that extend body
      * @return              Response casted in response class
      */
     <T extends Body> T securePost(@NonNull OffisanteApi api, @NonNull Uri uri,
-                                  @NonNull RequestBody body, @NonNull Class<T> responseCls, ResponseResultDeserializer deserializer);
+                                  @NonNull RequestBody body, @NonNull Class<T> responseCls);
 
     /**
      *                      Request token from Offisante API

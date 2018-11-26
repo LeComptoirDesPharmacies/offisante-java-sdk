@@ -1,4 +1,4 @@
-package fr.lecomptoirdespharmacies.entity.http.response;
+package fr.lecomptoirdespharmacies.entity.http.response.pharmacies;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.lecomptoirdespharmacies.entity.Pharmacy;

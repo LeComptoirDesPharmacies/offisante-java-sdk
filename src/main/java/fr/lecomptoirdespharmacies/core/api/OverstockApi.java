@@ -1,15 +1,12 @@
 package fr.lecomptoirdespharmacies.core.api;
 
 import fr.lecomptoirdespharmacies.OffisanteApi;
-import fr.lecomptoirdespharmacies.core.json.deserializer.ResponseResultDeserializer;
 import fr.lecomptoirdespharmacies.entity.Pharmacy;
 import fr.lecomptoirdespharmacies.entity.http.builder.CreateRequestBody;
 import fr.lecomptoirdespharmacies.entity.http.builder.CreateUri;
 import fr.lecomptoirdespharmacies.entity.http.RequestBody;
-import fr.lecomptoirdespharmacies.entity.http.response.ResponseBody;
 import fr.lecomptoirdespharmacies.entity.http.Uri;
-import fr.lecomptoirdespharmacies.entity.http.response.ResponseResult;
-import fr.lecomptoirdespharmacies.entity.http.response.overstock.OverstockResponseResult;
+import fr.lecomptoirdespharmacies.entity.http.response.overstock.OverstockBody;
 import lombok.NonNull;
 
 import java.util.List;
@@ -21,16 +18,10 @@ import static fr.lecomptoirdespharmacies.core.Constant.OVERSTOCK_API;
  */
 public class OverstockApi extends BaseApi {
 
-    private final ResponseResultDeserializer deserializer;
-
     private final CreateUri uriBuilder = new CreateUri().fromUri(OVERSTOCK_API);
 
     public OverstockApi(OffisanteApi api) {
         super(api);
-
-        // Create deserializer with annotated classes
-        deserializer = new ResponseResultDeserializer(api.getReflectionManager()
-                .getPropertyRegisterKey(ResponseResult.class, OverstockResponseResult.class));
     }
 
     /**
@@ -39,7 +30,7 @@ public class OverstockApi extends BaseApi {
      * @param pharmacies    Pharmacies to retrieve stock
      * @return              Response body with overstock
      */
-    public ResponseBody getOverstock(@NonNull List<Pharmacy> pharmacies){
+    public OverstockBody getOverstock(@NonNull List<Pharmacy> pharmacies){
 
         Uri uri = uriBuilder.build();
 
@@ -47,7 +38,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody,ResponseBody.class, deserializer);
+        return securePost(getApi(),uri,rBody, OverstockBody.class);
     }
 
     /**
@@ -56,7 +47,7 @@ public class OverstockApi extends BaseApi {
      * @param month         Custom number of month
      * @return              Response body with overstock
      */
-    public ResponseBody getOverstock(@NonNull List<Pharmacy> pharmacies, int month){
+    public OverstockBody getOverstock(@NonNull List<Pharmacy> pharmacies, int month){
 
         Uri uri = uriBuilder.addQueryParams("months",Integer.toString(month)).build();
 
@@ -64,7 +55,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody,ResponseBody.class, deserializer);
+        return securePost(getApi(),uri,rBody, OverstockBody.class);
     }
 
 }

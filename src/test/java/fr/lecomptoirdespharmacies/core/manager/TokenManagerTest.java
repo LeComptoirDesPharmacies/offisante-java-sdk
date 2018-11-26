@@ -3,6 +3,7 @@ package fr.lecomptoirdespharmacies.core.manager;
 import fr.lecomptoirdespharmacies.OffisanteApi;
 import fr.lecomptoirdespharmacies.core.api.AuthApi;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
+import fr.lecomptoirdespharmacies.entity.http.Body;
 import fr.lecomptoirdespharmacies.entity.http.Token;
 import org.joda.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Map;
 import static fr.lecomptoirdespharmacies.core.Constant.HEADER_AUTHORIZATION;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class TokenManagerTest {
@@ -69,11 +71,32 @@ class TokenManagerTest {
 
         final Integer remaining = 5;
 
+        final Body bodyMock = mock(Body.class);
+
+        when(bodyMock.getRemaining())
+                .thenReturn(remaining);
+
         tokenManager.setToken(validToken);
 
-        tokenManager.updateRemaining(remaining);
+        tokenManager.updateRemaining(bodyMock);
 
         assertEquals(remaining, tokenManager.getToken().getRemaining());
+        assertEquals(validToken.getValue(), tokenManager.getToken().getValue());
+    }
+
+    @Test
+    void test_update_token_remaining_with_null_remaining() {
+
+        final Body bodyMock = mock(Body.class);
+
+        when(bodyMock.getRemaining())
+                .thenReturn(null);
+
+        tokenManager.setToken(validToken);
+
+        tokenManager.updateRemaining(bodyMock);
+
+        assertEquals(validToken.getRemaining(), tokenManager.getToken().getRemaining());
         assertEquals(validToken.getValue(), tokenManager.getToken().getValue());
     }
 

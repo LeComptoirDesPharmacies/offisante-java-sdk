@@ -5,12 +5,9 @@ import fr.lecomptoirdespharmacies.core.api.AuthApi;
 import fr.lecomptoirdespharmacies.core.api.OverstockApi;
 import fr.lecomptoirdespharmacies.core.api.StockApi;
 import fr.lecomptoirdespharmacies.core.api.UnsoldApi;
-import fr.lecomptoirdespharmacies.core.manager.ReflectionManager;
 import fr.lecomptoirdespharmacies.core.manager.TokenManager;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
 import lombok.Getter;
-
-import static fr.lecomptoirdespharmacies.core.Constant.ENTITY_PACKAGE_NAME;
 
 //TODO: Logging module ??
 /**
@@ -57,7 +54,4 @@ public class OffisanteApi {
 
     /** Manager **/
     private TokenManager tokenManager;
-    private ReflectionManager reflectionManager = new ReflectionManager(ENTITY_PACKAGE_NAME);
-
-
 }
