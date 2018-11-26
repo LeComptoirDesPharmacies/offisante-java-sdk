@@ -13,6 +13,7 @@ public class Constant {
 
     // Api
     public static final String OVERSTOCK_API = "/1/dw/overstock";
+    public static final String UNSOLD_API = "/1/dw/unsold";
 
 
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
@@ -22,5 +23,9 @@ public class Constant {
     public static final String ENTITY_PACKAGE_NAME = "fr.lecomptoirdespharmacies.entity";
 
     public static final String DEFAULT_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
+    public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+
+    public static final String JSON_PRODUCTS_KEY = "products";
 
 }

@@ -1,4 +1,4 @@
-package fr.lecomptoirdespharmacies.entity.http.response.overstock;
+package fr.lecomptoirdespharmacies.entity.http.response.unsold;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,7 +20,7 @@ import static fr.lecomptoirdespharmacies.core.Constant.JSON_PRODUCTS_KEY;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 @PropertyRegister(key = JSON_PRODUCTS_KEY)
-public class OverstockResponseResult extends ResponseResult {
+public class UnsoldResponseResult extends ResponseResult {
     @JsonProperty(JSON_PRODUCTS_KEY)
-    private List<OverstockProduct> products;
+    private List<UnsoldProduct> products;
 }

@@ -28,4 +28,9 @@ public class ResponseBody extends Body {
     public void setOverStockResults(List<ResponseResult> results) {
         this.results = results;
     }
+
+    @JsonSetter("unsold")
+    public void setUnsoldResults(List<ResponseResult> results) {
+        this.results = results;
+    }
 }

@@ -3,6 +3,7 @@ package fr.lecomptoirdespharmacies;
 import fr.lecomptoirdespharmacies.core.Configuration;
 import fr.lecomptoirdespharmacies.core.api.AuthApi;
 import fr.lecomptoirdespharmacies.core.api.OverstockApi;
+import fr.lecomptoirdespharmacies.core.api.UnsoldApi;
 import fr.lecomptoirdespharmacies.core.manager.ReflectionManager;
 import fr.lecomptoirdespharmacies.core.manager.TokenManager;
 import fr.lecomptoirdespharmacies.entity.UserCredentials;
@@ -33,6 +34,7 @@ public class OffisanteApi {
     private void initApi(){
         authApi = new AuthApi(this);
         overstockApi = new OverstockApi(this);
+        unsoldApi = new UnsoldApi(this);
     }
 
     private void initialise(){
@@ -48,6 +50,7 @@ public class OffisanteApi {
     /** APIs **/
     private AuthApi authApi;
     private OverstockApi overstockApi;
+    private UnsoldApi unsoldApi;
 
     /** Manager **/
     private TokenManager tokenManager;
