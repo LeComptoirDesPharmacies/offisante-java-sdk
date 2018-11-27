@@ -24,6 +24,11 @@ public class Constant {
     public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 
+    /** ~~~~~~~~~~~~~~~ ERRORS ~~~~~~~~~~~~~~~ **/
+    public static final int UNKNOWN_TOKEN = -5;
+    public static final int TOKEN_RATE_LIMIT_REACHED = -6;
+    public static final int MALFORMED_TOKEN = -7;
+
     public static final String JSON_PRODUCTS_KEY = "products";
 
 }

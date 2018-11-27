@@ -38,7 +38,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody, OverstockBody.class);
+        return executePost(uri,rBody, OverstockBody.class, 1);
     }
 
     /**
@@ -55,7 +55,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody, OverstockBody.class);
+        return executePost(uri,rBody, OverstockBody.class, 1);
     }
 
 }

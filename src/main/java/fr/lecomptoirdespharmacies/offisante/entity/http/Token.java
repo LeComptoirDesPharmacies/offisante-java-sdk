@@ -1,19 +1,24 @@
 package fr.lecomptoirdespharmacies.offisante.entity.http;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.joda.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Token extends Body {
     @JsonProperty("accessToken")
     @NonNull String value;
 
-    public Token(Integer code, LocalDateTime next, Integer remaining, String version, @NonNull String value) {
-        super(code, next, remaining, version);
-        this.value = value;
+    @JsonIgnore
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @JsonIgnore
+    public boolean wasCreatedToday(){
+        return createdAt.getDayOfYear() == LocalDateTime.now().getDayOfYear();
     }
 
 }

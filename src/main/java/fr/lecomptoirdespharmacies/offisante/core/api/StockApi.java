@@ -38,7 +38,7 @@ public class StockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody, StockBody.class);
+        return executePost(uri,rBody, StockBody.class, 1);
     }
 
     /**
@@ -56,6 +56,6 @@ public class StockApi extends BaseApi {
                 .withProducts(products)
                 .build();
 
-        return securePost(getApi(),uri,rBody, StockBody.class);
+        return executePost(uri,rBody, StockBody.class, 1);
     }
 }

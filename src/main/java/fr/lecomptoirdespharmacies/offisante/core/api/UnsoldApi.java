@@ -36,6 +36,6 @@ public class UnsoldApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return securePost(getApi(),uri,rBody, UnsoldBody.class);
+        return executePost(uri,rBody, UnsoldBody.class, 1);
     }
 }

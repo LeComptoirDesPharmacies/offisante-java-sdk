@@ -1,9 +1,9 @@
 package fr.lecomptoirdespharmacies.offisante.core.manager;
 
 import fr.lecomptoirdespharmacies.offisante.core.api.AuthApi;
-import fr.lecomptoirdespharmacies.offisante.entity.http.Body;
 import fr.lecomptoirdespharmacies.offisante.entity.http.Token;
 import lombok.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,17 +28,19 @@ public class TokenManager {
      */
     public Token getToken(){
         if(isValid()) return token;
-        token = authApi.generateToken();
+        generateToken();
         return token;
     }
 
     /**
      *          Check if token is valid
+     *          Token should not be null
+     *          Token should be change every day
      * @return  Bool
      */
     private boolean isValid(){
         if (token == null) return false;
-        if (token.getRemaining() <= 0) return false;
+        if (!token.wasCreatedToday()) return false;
         return true;
     }
 
@@ -53,24 +55,15 @@ public class TokenManager {
     }
 
     /**
-     *                      Update remaining use of the token and generate a new one with
-     *                      current remaining
-     * @param response      Request response
+     * Generate token
+     * Could be use to request token manually
      */
-    public <T extends Body> void updateRemaining(T response){
-        if(response.getRemaining() != null) {
-            token = new Token(
-                    token.getCode(),
-                    token.getNext(),
-                    response.getRemaining(),
-                    token.getVersion(),
-                    token.getValue()
-            );
-        }
+    public void generateToken() {
+        token = authApi.generateToken();
     }
 
     /**
-     *                  Token is set and change automatically
+     *                  Token is set and manage automatically
      *                  No need to set it instead in test
      * @param token     Token to set
      */

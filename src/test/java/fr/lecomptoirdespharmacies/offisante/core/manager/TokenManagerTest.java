@@ -30,8 +30,8 @@ class TokenManagerTest {
     @InjectMocks
     private TokenManager tokenManager;
 
-    private final Token validToken = new Token(0, LocalDateTime.now(), 10, "1.0.0", "token1");
-    private final Token invalidToken = new Token(0, LocalDateTime.now(), 0, "1.0.0", "token2");
+    private final Token validToken = new Token( "token1", LocalDateTime.now());
+    private final Token invalidToken = new Token("token2", LocalDateTime.now().minusDays(1));
 
     @BeforeEach
     void setUp() {
@@ -65,39 +65,4 @@ class TokenManagerTest {
 
         assertEquals(tokenManager.getToken(), validToken);
     }
-
-    @Test
-    void test_update_token_remaining() {
-
-        final Integer remaining = 5;
-
-        final Body bodyMock = mock(Body.class);
-
-        when(bodyMock.getRemaining())
-                .thenReturn(remaining);
-
-        tokenManager.setToken(validToken);
-
-        tokenManager.updateRemaining(bodyMock);
-
-        assertEquals(remaining, tokenManager.getToken().getRemaining());
-        assertEquals(validToken.getValue(), tokenManager.getToken().getValue());
-    }
-
-    @Test
-    void test_update_token_remaining_with_null_remaining() {
-
-        final Body bodyMock = mock(Body.class);
-
-        when(bodyMock.getRemaining())
-                .thenReturn(null);
-
-        tokenManager.setToken(validToken);
-
-        tokenManager.updateRemaining(bodyMock);
-
-        assertEquals(validToken.getRemaining(), tokenManager.getToken().getRemaining());
-        assertEquals(validToken.getValue(), tokenManager.getToken().getValue());
-    }
-
 }
