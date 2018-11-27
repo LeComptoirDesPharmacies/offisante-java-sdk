@@ -23,6 +23,12 @@ public abstract class Body implements Jsonable {
     @JsonProperty("next")
     LocalDateTime next;
 
+    @JsonProperty("message")
+    String message;
+
+    @JsonProperty("description")
+    String description;
+
     @JsonProperty("remaining")
     Integer remaining;
 

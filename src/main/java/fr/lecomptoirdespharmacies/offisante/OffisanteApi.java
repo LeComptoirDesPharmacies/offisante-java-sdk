@@ -9,7 +9,6 @@ import fr.lecomptoirdespharmacies.offisante.core.manager.TokenManager;
 import fr.lecomptoirdespharmacies.offisante.entity.UserCredentials;
 import lombok.Getter;
 
-//TODO: Logging module ??
 /**
  * Main class API
  */
