@@ -48,11 +48,11 @@ public class HttpRequestor implements HttpRequest {
         } catch (NullPointerException e){
             // Body is empty
             e.printStackTrace();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Response body is empty cannot get string from it");
         } catch (IOException ie){
             // IO Exception
             ie.printStackTrace();
-            throw new RuntimeException();
+            throw new RuntimeException("An error occur when trying to post request");
         }
     }
 }
