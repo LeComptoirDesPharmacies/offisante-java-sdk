@@ -29,6 +29,9 @@ public class Constant {
     public static final int TOKEN_RATE_LIMIT_REACHED = -6;
     public static final int MALFORMED_TOKEN = -7;
 
+
+    public final static int MAX_RETRY = 8;
+    public final static int START_RETRY = 1;
     public static final String JSON_PRODUCTS_KEY = "products";
 
 }

@@ -1,15 +1,22 @@
-package fr.lecomptoirdespharmacies.offisante.core.manager;
+package fr.lecomptoirdespharmacies.offisante.core.util;
+
+import lombok.Getter;
+import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;
 
-public class TimeManager {
+/**
+ * Simple class to sleep program and manage sleeping time
+ */
+@Getter
+public class TimeUtil {
     private int seconds;
 
     private int multiplier;
 
     private int initialValue;
 
-    public TimeManager(int seconds, int multiplier) {
+    public TimeUtil(int seconds, int multiplier) {
         this.seconds = seconds;
         this.multiplier = multiplier;
         this.initialValue = multiplier;
@@ -27,12 +34,9 @@ public class TimeManager {
         return seconds * multiplier;
     }
 
+    @SneakyThrows(InterruptedException.class)
     public void sleep(){
-        try {
-            TimeUnit.SECONDS.sleep(getSeconds());
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
+        TimeUnit.SECONDS.sleep(getSeconds());
         incrementMultiplier();
     }
 }

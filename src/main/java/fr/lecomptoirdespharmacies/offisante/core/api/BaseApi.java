@@ -2,24 +2,20 @@ package fr.lecomptoirdespharmacies.offisante.core.api;
 
 import fr.lecomptoirdespharmacies.offisante.OffisanteApi;
 import fr.lecomptoirdespharmacies.offisante.core.endpoint.PostEndpoint;
-import fr.lecomptoirdespharmacies.offisante.core.manager.TimeManager;
+import fr.lecomptoirdespharmacies.offisante.core.util.TimeUtil;
 import fr.lecomptoirdespharmacies.offisante.entity.http.Body;
 import fr.lecomptoirdespharmacies.offisante.entity.http.RequestBody;
 import fr.lecomptoirdespharmacies.offisante.entity.http.Uri;
 import lombok.Getter;
 
-import static fr.lecomptoirdespharmacies.offisante.core.Constant.MALFORMED_TOKEN;
-import static fr.lecomptoirdespharmacies.offisante.core.Constant.TOKEN_RATE_LIMIT_REACHED;
-import static fr.lecomptoirdespharmacies.offisante.core.Constant.UNKNOWN_TOKEN;
+import static fr.lecomptoirdespharmacies.offisante.core.Constant.*;
 
 @Getter
 abstract class BaseApi extends PostEndpoint {
 
     private OffisanteApi api;
 
-    private final TimeManager timeManager = new TimeManager(10, 1);
-
-    private final static int MAX_RETRY = 5;
+    private final TimeUtil timeUtil = new TimeUtil(10, 1);
 
     protected BaseApi(OffisanteApi api) {
         this.api = api;
@@ -51,10 +47,10 @@ abstract class BaseApi extends PostEndpoint {
      * @return              Response casted in response class
      */
     public  <T extends Body> T executePost(Uri uri, RequestBody body, Class<T> responseCls, int retry){
-        T response = securePost(api, uri, body, responseCls);
+        T response = securePost(getApi(), uri, body, responseCls);
 
         if(response.getCode() == null) {
-            timeManager.resetMultiplier();
+            getTimeUtil().resetMultiplier();
             return response;
         }
 
@@ -78,20 +74,20 @@ abstract class BaseApi extends PostEndpoint {
      * @param <T>           Class that extend body
      * @return              New response casted in response class
      */
-    private  <T extends Body> T manageError(T response, Uri uri, RequestBody body, Class<T> responseCls, int retry){
+    public  <T extends Body> T manageError(T response, Uri uri, RequestBody body, Class<T> responseCls, int retry){
         // Manage errors due to token
         switch (response.getCode()){
             case UNKNOWN_TOKEN:
-                api.getTokenManager().generateToken();
+                getApi().getTokenManager().generateToken();
                 return executePost(uri, body, responseCls, retry+1);
             case TOKEN_RATE_LIMIT_REACHED:
-                timeManager.sleep();
+                getTimeUtil().sleep();
                 return executePost(uri, body, responseCls, retry+1);
             case MALFORMED_TOKEN:
-                api.getTokenManager().generateToken();
+                getApi().getTokenManager().generateToken();
                 return executePost(uri, body, responseCls, retry+1);
             default:
-                timeManager.resetMultiplier();
+                getTimeUtil().resetMultiplier();
                 return response;
         }
     }
