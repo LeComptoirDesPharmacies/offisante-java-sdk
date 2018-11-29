@@ -12,6 +12,7 @@ import lombok.NonNull;
 import java.util.List;
 
 import static fr.lecomptoirdespharmacies.offisante.core.Constant.OVERSTOCK_API;
+import static fr.lecomptoirdespharmacies.offisante.core.Constant.START_RETRY;
 
 /**
  * Overstock API permit to get overstock product in drugs stores from Offisante
@@ -38,7 +39,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return executePost(uri,rBody, OverstockBody.class, 1);
+        return executePost(uri,rBody, OverstockBody.class, START_RETRY);
     }
 
     /**
@@ -55,7 +56,7 @@ public class OverstockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return executePost(uri,rBody, OverstockBody.class, 1);
+        return executePost(uri,rBody, OverstockBody.class, START_RETRY);
     }
 
 }

@@ -12,6 +12,7 @@ import lombok.NonNull;
 
 import java.util.List;
 
+import static fr.lecomptoirdespharmacies.offisante.core.Constant.START_RETRY;
 import static fr.lecomptoirdespharmacies.offisante.core.Constant.STOCK_API;
 
 /**
@@ -38,7 +39,7 @@ public class StockApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return executePost(uri,rBody, StockBody.class, 1);
+        return executePost(uri,rBody, StockBody.class, START_RETRY);
     }
 
     /**
@@ -56,6 +57,6 @@ public class StockApi extends BaseApi {
                 .withProducts(products)
                 .build();
 
-        return executePost(uri,rBody, StockBody.class, 1);
+        return executePost(uri,rBody, StockBody.class, START_RETRY);
     }
 }

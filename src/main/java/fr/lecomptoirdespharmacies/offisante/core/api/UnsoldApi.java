@@ -11,6 +11,7 @@ import lombok.NonNull;
 
 import java.util.List;
 
+import static fr.lecomptoirdespharmacies.offisante.core.Constant.START_RETRY;
 import static fr.lecomptoirdespharmacies.offisante.core.Constant.UNSOLD_API;
 
 /**
@@ -36,6 +37,6 @@ public class UnsoldApi extends BaseApi {
                 .withPharmacies(pharmacies)
                 .build();
 
-        return executePost(uri,rBody, UnsoldBody.class, 1);
+        return executePost(uri,rBody, UnsoldBody.class, START_RETRY);
     }
 }
