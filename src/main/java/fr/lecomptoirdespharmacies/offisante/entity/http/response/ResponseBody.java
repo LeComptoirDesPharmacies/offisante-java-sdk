@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public abstract class ResponseBody extends Body {
+public class ResponseBody extends Body {
     @JsonProperty("pharmacies")
     private ResponsePharmacy pharmacies;
 }

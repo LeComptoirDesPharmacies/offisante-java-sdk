@@ -15,6 +15,7 @@ public class Constant {
     public static final String OVERSTOCK_API = "/1/dw/overstock";
     public static final String UNSOLD_API = "/1/dw/unsold";
     public static final String STOCK_API = "/1/dw/stock";
+    public static final String PHARMACY_API = "/1/dw/pharmacies";
 
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
     public static final String HEADER_AUTHORIZATION = "Authorization";
