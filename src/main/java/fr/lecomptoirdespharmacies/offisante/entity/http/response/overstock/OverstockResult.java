@@ -17,7 +17,6 @@ import static fr.lecomptoirdespharmacies.offisante.core.Constant.JSON_PRODUCTS_K
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class OverstockResult extends ResponseResult {
     @JsonProperty(JSON_PRODUCTS_KEY)
     private List<OverstockProduct> products;
