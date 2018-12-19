@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.lecomptoirdespharmacies.offisante'
-version '0.0.8'
+version '0.0.9'
 
 sourceCompatibility = 1.8
 
@@ -34,7 +34,7 @@ uploadArchives {
     repositories.mavenDeployer {
         pom.groupId = 'fr.lecomptoirdespharmacies'
         pom.artifactId = 'offisante-java-sdk'
-        pom.version = '0.0.8'
+        pom.version = '0.0.9'
         configuration = configurations.deployerJars
         repository(url: "git:releases://git@bitbucket.org:lecomptoirdespharmacies/maven_repository.git")
         snapshotRepository(url: "git:snapshots://git@bitbucket.org:lecomptoirdespharmacies/maven_repository.git")
