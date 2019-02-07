@@ -44,4 +44,29 @@ class UrlUtilTest {
 
         assertEquals(expected, util.getFullUrl(prodApi, uri));
     }
+
+    @Test
+    void test_full_url_creation_for_dev_with_one_param() {
+        final String expected = DEV_BASE_URL+"/uri?q1=0123456789";
+
+        Uri uri = new CreateUri()
+                .fromUri("/uri")
+                .addQueryParams("q1","0123456789")
+                .build();
+
+        assertEquals(expected, util.getFullUrl(devApi, uri));
+    }
+
+    @Test
+    void test_full_url_creation_for_prod_with_params() {
+        final String expected = PRODUCTION_BASE_URL+"/uri?q1=0123456789&q2=0987654321";
+
+        Uri uri = new CreateUri()
+                .fromUri("/uri")
+                .addQueryParams("q1","0123456789")
+                .addQueryParams("q2","0987654321")
+                .build();
+
+        assertEquals(expected, util.getFullUrl(prodApi, uri));
+    }
 }

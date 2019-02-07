@@ -21,7 +21,7 @@ public class UnsoldApi extends BaseApi {
 
     private final CreateUri uriBuilder = new CreateUri().fromUri(UNSOLD_API);
 
-    public UnsoldApi(OffisanteApi api) {
+    public UnsoldApi(OffisanteApi api){
         super(api);
     }
 
@@ -32,6 +32,24 @@ public class UnsoldApi extends BaseApi {
      */
     public UnsoldBody getUnsold(@NonNull List<Pharmacy> pharmacies){
         Uri uri = uriBuilder.build();
+
+        RequestBody rBody = new CreateRequestBody()
+                .withPharmacies(pharmacies)
+                .build();
+
+        return executePost(uri,rBody, UnsoldBody.class, START_RETRY);
+    }
+
+    /**
+     *                      Retrieve unsold product from timestamp
+     * @param pharmacies    Pharmacies where to retrieve unsold product
+     * @param from          From unix timestamp
+     * @return              Response body with unsold
+     */
+    public UnsoldBody getUnsold(@NonNull List<Pharmacy> pharmacies, long from){
+        Uri uri = uriBuilder
+                .addQueryParams("time",Long.toString(from))
+                .build();
 
         RequestBody rBody = new CreateRequestBody()
                 .withPharmacies(pharmacies)

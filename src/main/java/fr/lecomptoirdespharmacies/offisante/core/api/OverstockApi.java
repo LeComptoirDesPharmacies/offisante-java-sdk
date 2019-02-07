@@ -50,7 +50,9 @@ public class OverstockApi extends BaseApi {
      */
     public OverstockBody getOverstock(@NonNull List<Pharmacy> pharmacies, int month){
 
-        Uri uri = uriBuilder.addQueryParams("months",Integer.toString(month)).build();
+        Uri uri = uriBuilder
+                .addQueryParams("months",Integer.toString(month))
+                .build();
 
         RequestBody rBody = new CreateRequestBody()
                 .withPharmacies(pharmacies)
@@ -58,5 +60,46 @@ public class OverstockApi extends BaseApi {
 
         return executePost(uri,rBody, OverstockBody.class, START_RETRY);
     }
+
+    /**
+     *                      Retrieve overstock from a certain timestamp
+     * @param pharmacies    Pharmacies to retrieve stock
+     * @param from          From unix timestamp
+     * @return              Response body with overstock
+     */
+    public OverstockBody getOverstock(@NonNull List<Pharmacy> pharmacies, long from){
+
+        Uri uri = uriBuilder
+                .addQueryParams("time",Long.toString(from))
+                .build();
+
+        RequestBody rBody = new CreateRequestBody()
+                .withPharmacies(pharmacies)
+                .build();
+
+        return executePost(uri,rBody, OverstockBody.class, START_RETRY);
+    }
+
+    /**
+     *                      Retrieve overstock from a certain timestamp
+     * @param pharmacies    Pharmacies to retrieve stock
+     * @param month         Custom number of month
+     * @param from          From unix timestamp
+     * @return              Response body with overstock
+     */
+    public OverstockBody getOverstock(@NonNull List<Pharmacy> pharmacies, int month, long from){
+
+        Uri uri = uriBuilder
+                .addQueryParams("months",Integer.toString(month))
+                .addQueryParams("time",Long.toString(from))
+                .build();
+
+        RequestBody rBody = new CreateRequestBody()
+                .withPharmacies(pharmacies)
+                .build();
+
+        return executePost(uri,rBody, OverstockBody.class, START_RETRY);
+    }
+
 
 }
