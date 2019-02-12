@@ -18,6 +18,4 @@ public class UnsoldProduct extends ResponseProduct {
     @JsonProperty("Last_Sale")
     @JsonDeserialize(using = ProductDateTimeDeserializer.class)
     LocalDateTime lastSale;
-    @JsonProperty("time")
-    Long time;
 }

@@ -38,6 +38,9 @@ public abstract class ResponseProduct extends BaseEntity {
     @JsonProperty("unit_price")
     BigDecimal unitPrice;
 
+    @JsonProperty("time")
+    Long time;
+
     @JsonIgnore
     public List<String> getCodes(){
         List<String> codes = new ArrayList<>();
