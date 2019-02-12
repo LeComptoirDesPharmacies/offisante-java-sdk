@@ -19,6 +19,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ResponseProduct extends BaseEntity {
+    @JsonProperty("id_product")
+    Long id;
+
     @JsonProperty("cip7")
     String cip7;
 
