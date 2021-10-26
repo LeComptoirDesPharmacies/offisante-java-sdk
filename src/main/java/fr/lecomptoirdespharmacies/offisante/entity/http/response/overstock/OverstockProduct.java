@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 public class OverstockProduct extends ResponseProduct {
     @JsonProperty("Forecast")
     Integer forecast;
+    @JsonProperty("unsold")
+    Integer unsold;
 }
