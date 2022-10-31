@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.lecomptoirdespharmacies.offisante'
-version '1.0.2'
+version '1.0.3-LDS-2717-runtimeexception-unable-to-map-json-to-entity-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -34,7 +34,7 @@ uploadArchives {
     repositories.mavenDeployer {
         pom.groupId = 'fr.lecomptoirdespharmacies'
         pom.artifactId = 'offisante-java-sdk'
-        pom.version = '1.0.2'
+        pom.version = getVersion()
         configuration = configurations.deployerJars
         repository(url: "git:releases://git@bitbucket.org:lecomptoirdespharmacies/maven_repository.git")
         snapshotRepository(url: "git:snapshots://git@bitbucket.org:lecomptoirdespharmacies/maven_repository.git")
@@ -73,7 +73,6 @@ uploadArchives {
 
 allprojects {
     repositories {
-        jcenter()
         mavenCentral()
         maven { url "https://raw.github.com/synergian/wagon-git/releases" }
     }
