@@ -22,7 +22,7 @@ public class Constant {
 
     /** ~~~~~~~~~~~~~~~ DATE PATTERNS ~~~~~~~~~~~~~~~ **/
     public static final String DEFAULT_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
-    public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss.SSS";
 
 
     /** ~~~~~~~~~~~~~~~ ERRORS ~~~~~~~~~~~~~~~ **/
