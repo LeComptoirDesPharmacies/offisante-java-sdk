@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.lecomptoirdespharmacies.offisante'
-version '1.0.3-LDS-2717-runtimeexception-unable-to-map-json-to-entity-SNAPSHOT'
+version '1.0.3'
 
 sourceCompatibility = 1.8
 
