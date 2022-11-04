@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.DateTimeFormatterBuilder;
 
 import java.io.IOException;
-import java.util.Locale;
 
 import static fr.lecomptoirdespharmacies.offisante.core.Constant.DEFAULT_PRODUCT_DATE_PATTERN;
 
@@ -17,7 +17,12 @@ import static fr.lecomptoirdespharmacies.offisante.core.Constant.DEFAULT_PRODUCT
 public class ProductDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
     @Override
     public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern(DEFAULT_PRODUCT_DATE_PATTERN).withLocale(Locale.US);
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .append(DateTimeFormat.forPattern(DEFAULT_PRODUCT_DATE_PATTERN))
+                .appendOptional(new DateTimeFormatterBuilder()
+                        .append(DateTimeFormat.forPattern(".SSS"))
+                        .toParser()
+                ).toFormatter();
         return LocalDateTime.parse(p.getText(), formatter);
     }
 }
