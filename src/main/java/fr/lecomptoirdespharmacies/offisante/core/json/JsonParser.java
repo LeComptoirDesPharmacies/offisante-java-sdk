@@ -24,15 +24,12 @@ public class JsonParser extends Json{
     public <T extends Body> T parseJsonTo(Class<T> responseCls){
         try {
             return mapper.readValue(json, responseCls);
-        } catch (JsonParseException jpe){
-            jpe.printStackTrace();
-            throw new RuntimeException("Unable to parse entity to Json");
-        } catch (JsonMappingException jme){
-            jme.printStackTrace();
-            throw new RuntimeException("Unable to map json to entity");
-        } catch (IOException ie){
-            ie.printStackTrace();
-            throw new RuntimeException("I/O exception occur during json parsing");
+        } catch (JsonParseException e){
+            throw new RuntimeException("Unable to parse entity to Json", e);
+        } catch (JsonMappingException e){
+            throw new RuntimeException("Unable to map json to entity", e);
+        } catch (IOException e){
+            throw new RuntimeException("I/O exception occur during json parsing", e);
         }
     }
 }
