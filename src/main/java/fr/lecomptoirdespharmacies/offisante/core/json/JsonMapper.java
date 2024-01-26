@@ -12,8 +12,7 @@ public class JsonMapper extends Json {
         try {
             return mapper.writeValueAsString(entity);
         } catch (JsonProcessingException e){
-            e.printStackTrace();
-            throw new RuntimeException("Unable to parse entity to Json");
+            throw new RuntimeException("Unable to parse entity to Json", e);
         }
     }
 }

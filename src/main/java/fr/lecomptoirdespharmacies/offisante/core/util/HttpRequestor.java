@@ -47,12 +47,10 @@ public class HttpRequestor implements HttpRequest {
             return response.body().string();
         } catch (NullPointerException e){
             // Body is empty
-            e.printStackTrace();
-            throw new IllegalArgumentException("Response body is empty cannot get string from it");
-        } catch (IOException ie){
+            throw new IllegalArgumentException("Response body is empty cannot get string from it", e);
+        } catch (IOException e){
             // IO Exception
-            ie.printStackTrace();
-            throw new RuntimeException("An error occur when trying to post request");
+            throw new RuntimeException("An error occur when trying to post request", e);
         }
     }
 }
