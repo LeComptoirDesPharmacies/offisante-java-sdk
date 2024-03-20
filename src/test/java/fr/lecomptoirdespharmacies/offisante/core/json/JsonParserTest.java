@@ -5,7 +5,6 @@ import fr.lecomptoirdespharmacies.offisante.entity.UserCredentials;
 import fr.lecomptoirdespharmacies.offisante.entity.http.Token;
 import fr.lecomptoirdespharmacies.offisante.entity.http.response.overstock.OverstockBody;
 import fr.lecomptoirdespharmacies.offisante.entity.http.response.stock.StockBody;
-import fr.lecomptoirdespharmacies.offisante.entity.http.response.unsold.UnsoldBody;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -43,7 +42,7 @@ class JsonParserTest {
 
             OverstockBody response = parser.parseJsonTo(OverstockBody.class);
 
-            assertEquals(1,response.getOverstock().size());
+            assertEquals(1,response.getResults().size());
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -62,24 +61,6 @@ class JsonParserTest {
             StockBody response = parser.parseJsonTo(StockBody.class);
 
             assertEquals(1,response.getStock().size());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    void test_unsold_response_parsing() {
-        try {
-
-            ClassLoader classLoader = getClass().getClassLoader();
-            File jsonFile = new File(classLoader.getResource("json/fake_unsold.json").getFile());
-            String content = new String (Files.readAllBytes(jsonFile.toPath()), Charset.forName("UTF-8"));
-
-            JsonParser parser = new CreateJsonParser(content).build();
-
-            UnsoldBody response = parser.parseJsonTo(UnsoldBody.class);
-
-            assertEquals(1,response.getUnsold().size());
         } catch (Exception e){
             e.printStackTrace();
         }
