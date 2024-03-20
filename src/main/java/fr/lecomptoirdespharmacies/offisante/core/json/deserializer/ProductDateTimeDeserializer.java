@@ -20,7 +20,7 @@ public class ProductDateTimeDeserializer extends JsonDeserializer<LocalDateTime>
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .append(DateTimeFormat.forPattern(DEFAULT_PRODUCT_DATE_PATTERN))
                 .appendOptional(new DateTimeFormatterBuilder()
-                        .append(DateTimeFormat.forPattern(".SSS"))
+                        .append(DateTimeFormat.forPattern(".SSSSSS"))
                         .toParser()
                 ).toFormatter();
         return LocalDateTime.parse(p.getText(), formatter);
