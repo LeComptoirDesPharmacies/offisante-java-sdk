@@ -12,9 +12,8 @@ public class Constant {
     public static final String AUTH_URI = "/1/auth";
 
     // Api
-    public static final String OVERSTOCK_API = "/1/dw/overstock";
-    public static final String UNSOLD_API = "/1/dw/unsold";
-    public static final String STOCK_API = "/1/dw/stock";
+    public static final String OVERSTOCK_API = "/2/overstock";
+    public static final String STOCK_API = "/2/stock";
     public static final String PHARMACY_API = "/1/dw/pharmacies";
 
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
