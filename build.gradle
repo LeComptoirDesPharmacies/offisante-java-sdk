@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.lecomptoirdespharmacies.offisante'
-version '1.0.5-LDS_3441-SNAPSHOT'
+version '1.0.5-LDS_3441-4-SNAPSHOT'
 
 sourceCompatibility = 1.8
 

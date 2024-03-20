@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.Cip13Deserializer;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.ProductDateTimeDeserializer;
 import fr.lecomptoirdespharmacies.offisante.entity.BaseEntity;
-import fr.lecomptoirdespharmacies.offisante.entity.http.response.ResponseResult;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +23,10 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OverstockResult extends BaseEntity {
+public class OverstockProduct extends BaseEntity {
+    @JsonProperty("CIP_PHARMACIE")
+    private String cipPharmacy;
+
     @JsonProperty("ID_PRODUIT")
     Long id;
 
