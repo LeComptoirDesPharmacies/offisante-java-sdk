@@ -4,19 +4,19 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static fr.lecomptoirdespharmacies.offisante.core.Constant.DEFAULT_DATE_PATTERN;
+import static fr.lecomptoirdespharmacies.offisante.core.Constant.DEFAULT_DATE_TIME_PATTERN;
 
 public class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
     @Override
-    public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern(DEFAULT_DATE_PATTERN).withLocale(Locale.US);
+    public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_PATTERN).withLocale(Locale.US);
         return LocalDateTime.parse(p.getText(), formatter);
     }
 }

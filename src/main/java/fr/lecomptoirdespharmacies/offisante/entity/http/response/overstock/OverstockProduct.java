@@ -5,16 +5,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.Cip13Deserializer;
+import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.LocalDateDeserializer;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.ProductDateTimeDeserializer;
 import fr.lecomptoirdespharmacies.offisante.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.joda.time.LocalDateTime;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,13 +52,13 @@ public class OverstockProduct extends BaseEntity {
     LocalDateTime time;
 
     @JsonProperty("FORECAST")
-    Integer forecast;
+    BigDecimal forecast;
 
     @JsonProperty("UNSOLD")
     Integer unsold;
 
     @JsonProperty("LAST_SALE")
-    @JsonDeserialize(using = ProductDateTimeDeserializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     LocalDate lastSale;
 
     @JsonIgnore

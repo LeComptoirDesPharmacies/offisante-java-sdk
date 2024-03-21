@@ -8,7 +8,8 @@ import fr.lecomptoirdespharmacies.offisante.entity.Jsonable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.joda.time.LocalDateTime;
+
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
