@@ -13,8 +13,7 @@ Features
 -------------
 
 - __Overstock :__ Get overstock products in pharmacy
-- __Stock :__ Get products stock in pharmacy 
-- __Unsold :__ Get unsold products in pharmacy 
+- __Stock :__ Get products stock in pharmacy
 
 Contact
 -------------
@@ -40,8 +39,6 @@ Simple usage
         final Product pt1 = new Product("3400935294227");
 
         OverstockBody overstocks = api.getOverstockApi().getOverstock(Arrays.asList(p1,p2));
-
-        UnsoldBody unsolds = api.getUnsoldApi().getUnsold(Arrays.asList(p1,p2));
 
         StockBody stocks = api.getStockApi().getStock(Arrays.asList(p1,p2), Arrays.asList(pt1));
     }
