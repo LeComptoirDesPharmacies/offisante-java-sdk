@@ -12,17 +12,16 @@ public class Constant {
     public static final String AUTH_URI = "/1/auth";
 
     // Api
-    public static final String OVERSTOCK_API = "/1/dw/overstock";
-    public static final String UNSOLD_API = "/1/dw/unsold";
-    public static final String STOCK_API = "/1/dw/stock";
+    public static final String OVERSTOCK_API = "/2/overstock";
+    public static final String STOCK_API = "/2/stock";
     public static final String PHARMACY_API = "/1/dw/pharmacies";
 
     /** ~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~ **/
     public static final String HEADER_AUTHORIZATION = "Authorization";
 
     /** ~~~~~~~~~~~~~~~ DATE PATTERNS ~~~~~~~~~~~~~~~ **/
-    public static final String DEFAULT_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
-    public static final String DEFAULT_PRODUCT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_DATE_TIME_PATTERN = "EEE, dd MMM yyyy HH:mm:ss Z";
+    public static final String DEFAULT_PRODUCT_DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 
     /** ~~~~~~~~~~~~~~~ ERRORS ~~~~~~~~~~~~~~~ **/

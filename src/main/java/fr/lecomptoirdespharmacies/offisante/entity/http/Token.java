@@ -3,7 +3,8 @@ package fr.lecomptoirdespharmacies.offisante.entity.http;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.joda.time.LocalDateTime;
+
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor

@@ -28,7 +28,6 @@ public class OffisanteApi {
     private void initApi(){
         authApi = new AuthApi(this);
         overstockApi = new OverstockApi(this);
-        unsoldApi = new UnsoldApi(this);
         stockApi = new StockApi(this);
         pharmacyApi = new PharmacyApi(this);
     }
@@ -46,7 +45,6 @@ public class OffisanteApi {
     /** APIs **/
     private AuthApi authApi;
     private OverstockApi overstockApi;
-    private UnsoldApi unsoldApi;
     private StockApi stockApi;
     private PharmacyApi pharmacyApi;
 
