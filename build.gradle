@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.lecomptoirdespharmacies.offisante'
-version '1.0.5T'
+version '1.0.5'
 
 sourceCompatibility = 1.8
 
