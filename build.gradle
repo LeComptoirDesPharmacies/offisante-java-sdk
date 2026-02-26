@@ -74,11 +74,11 @@ publishing {
         maven {
             name = 'OSSRH'
             url = version.toString().endsWith('-SNAPSHOT')
-                    ? 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-                    : 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+                    ? 'https://central.sonatype.com/repository/maven-snapshots/'
+                    : 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
             credentials {
-                username = System.getenv('MAVEN_USERNAME') ?: ''
-                password = System.getenv('MAVEN_PASSWORD') ?: ''
+                username = System.getenv('SONATYPE_USERNAME') ?: ''
+                password = System.getenv('SONATYPE_PASSWORD') ?: ''
             }
         }
     }
