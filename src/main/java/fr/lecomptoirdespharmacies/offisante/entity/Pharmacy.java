@@ -3,11 +3,9 @@ package fr.lecomptoirdespharmacies.offisante.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.StockDateTimeDeserializer;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
@@ -22,6 +20,5 @@ public class Pharmacy extends BaseEntity {
     String cip;
 
     @JsonProperty("last_date_stock")
-    @JsonDeserialize(using = StockDateTimeDeserializer.class)
-    LocalDateTime lastDateStock;
+    LocalDate lastDateStock;
 }

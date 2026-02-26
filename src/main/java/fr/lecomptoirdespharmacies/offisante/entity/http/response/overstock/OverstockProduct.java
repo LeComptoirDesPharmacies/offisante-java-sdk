@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.LocalDateDeserializer;
-import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.StockDateTimeDeserializer;
 import fr.lecomptoirdespharmacies.offisante.entity.http.response.ResponseProduct;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
