@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'fr.lecomptoirdespharmacies'
-version = '1.0.7-SNAPSHOT'
+version = '1.0.7'
 
 dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'
