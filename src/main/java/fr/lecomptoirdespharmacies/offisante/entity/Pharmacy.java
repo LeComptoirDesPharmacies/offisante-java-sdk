@@ -1,5 +1,6 @@
 package fr.lecomptoirdespharmacies.offisante.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.lecomptoirdespharmacies.offisante.core.json.deserializer.StockDateTimeDeserializer;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pharmacy extends BaseEntity {
     @JsonProperty("cip")
     @NonNull
