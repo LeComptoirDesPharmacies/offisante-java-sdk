@@ -26,7 +26,7 @@ public class TokenManager {
      *          Get current token if valid or request for a new token
      * @return  A valid token
      */
-    public Token getToken(){
+    public synchronized Token getToken(){
         if(isValid()) return token;
         generateToken();
         return token;
