@@ -121,4 +121,19 @@ class BaseApiTest {
 
         assertEquals(body, response);
     }
+
+    @Test
+    void do_retry_when_ip_address_mismatch_error_occur() {
+        when(body.getCode()).thenReturn(IP_ADDRESS_MISMATCH);
+
+        final Body response = baseApi.executePost(uri, requestBody, responseCls, START_RETRY);
+
+        verify(baseApi, times(MAX_RETRY)).manageError(
+                eq(body), eq(uri), eq(requestBody), eq(responseCls), any(Integer.class)
+        );
+
+        verify(tokenManager, times(MAX_RETRY)).generateToken();
+
+        assertEquals(body, response);
+    }
 }

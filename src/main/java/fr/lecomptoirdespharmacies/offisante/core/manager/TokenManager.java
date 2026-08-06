@@ -58,7 +58,7 @@ public class TokenManager {
      * Generate token
      * Could be use to request token manually
      */
-    public void generateToken() {
+    public synchronized void generateToken() {
         token = authApi.generateToken();
     }
 
