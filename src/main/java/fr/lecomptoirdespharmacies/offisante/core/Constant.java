@@ -28,6 +28,8 @@ public class Constant {
     public static final int UNKNOWN_TOKEN = -5;
     public static final int TOKEN_RATE_LIMIT_REACHED = -6;
     public static final int MALFORMED_TOKEN = -7;
+    // Token is bound to the IP used at generation, egress IP may change between requests
+    public static final int IP_ADDRESS_MISMATCH = -10;
 
 
     public final static int MAX_RETRY = 8;

@@ -76,19 +76,19 @@ abstract class BaseApi extends PostEndpoint {
      */
     public  <T extends Body> T manageError(T response, Uri uri, RequestBody body, Class<T> responseCls, int retry){
         // Manage errors due to token
-        switch (response.getCode()){
-            case UNKNOWN_TOKEN:
+        return switch (response.getCode()) {
+            case UNKNOWN_TOKEN, MALFORMED_TOKEN, IP_ADDRESS_MISMATCH -> {
                 getApi().getTokenManager().generateToken();
-                return executePost(uri, body, responseCls, retry+1);
-            case TOKEN_RATE_LIMIT_REACHED:
+                yield executePost(uri, body, responseCls, retry + 1);
+            }
+            case TOKEN_RATE_LIMIT_REACHED -> {
                 getTimeUtil().sleep();
-                return executePost(uri, body, responseCls, retry+1);
-            case MALFORMED_TOKEN:
-                getApi().getTokenManager().generateToken();
-                return executePost(uri, body, responseCls, retry+1);
-            default:
+                yield executePost(uri, body, responseCls, retry + 1);
+            }
+            default -> {
                 getTimeUtil().resetMultiplier();
-                return response;
-        }
+                yield response;
+            }
+        };
     }
 }
