@@ -44,7 +44,19 @@ public class HttpRequestor implements HttpRequest {
 
         // Handle exception
         try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
+            String content = response.body().string();
+
+            // Offisante may answer with something that is not Json at all (gateway error page,
+            // maintenance page). Fail here with the http status and what was actually received,
+            // rather than letting the Json parser report an unusable "Unexpected character ('<')".
+            if (!PayloadUtil.isJsonPayload(content)) {
+                throw new RuntimeException(String.format(
+                        "Offisante returned a non Json response (HTTP %d) for %s : %s",
+                        response.code(), url, PayloadUtil.excerpt(content)
+                ));
+            }
+
+            return content;
         } catch (NullPointerException e){
             // Body is empty
             throw new IllegalArgumentException("Response body is empty cannot get string from it", e);

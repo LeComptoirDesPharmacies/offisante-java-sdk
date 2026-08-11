@@ -3,6 +3,7 @@ package fr.lecomptoirdespharmacies.offisante.core.json;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.lecomptoirdespharmacies.offisante.core.util.PayloadUtil;
 import fr.lecomptoirdespharmacies.offisante.entity.http.Body;
 
 import java.io.IOException;
@@ -25,11 +26,11 @@ public class JsonParser extends Json{
         try {
             return mapper.readValue(json, responseCls);
         } catch (JsonParseException e){
-            throw new RuntimeException("Unable to parse entity to Json", e);
+            throw new RuntimeException("Unable to parse entity to Json, received : " + PayloadUtil.excerpt(json), e);
         } catch (JsonMappingException e){
-            throw new RuntimeException("Unable to map json to entity", e);
+            throw new RuntimeException("Unable to map json to entity, received : " + PayloadUtil.excerpt(json), e);
         } catch (IOException e){
-            throw new RuntimeException("I/O exception occur during json parsing", e);
+            throw new RuntimeException("I/O exception occur during json parsing, received : " + PayloadUtil.excerpt(json), e);
         }
     }
 }
