@@ -31,6 +31,20 @@ class JsonParserTest {
     }
 
     @Test
+    void parsing_error_message_holds_an_excerpt_of_what_was_received() {
+        final String html = "<!DOCTYPE html><html><body>502 Bad Gateway</body></html>";
+
+        JsonParser parser = new CreateJsonParser(html).build();
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> parser.parseJsonTo(Token.class)
+        );
+
+        assertTrue(exception.getMessage().contains("502 Bad Gateway"), exception.getMessage());
+    }
+
+    @Test
     void test_overstock_response_parsing() {
         try {
 
