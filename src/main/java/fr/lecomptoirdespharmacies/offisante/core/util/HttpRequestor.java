@@ -1,6 +1,8 @@
 package fr.lecomptoirdespharmacies.offisante.core.util;
 
 import okhttp3.*;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +13,11 @@ import java.util.concurrent.TimeUnit;
 public class HttpRequestor implements HttpRequest {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    /**
+     * Maximum number of characters kept when a response is quoted in an error message
+     */
+    private static final int EXCERPT_MAX_LENGTH = 200;
 
     private static final Integer CONNECT_TIMEOUT = 30;
     private static final Integer WRITE_TIMEOUT = 30;
@@ -44,15 +51,18 @@ public class HttpRequestor implements HttpRequest {
 
         // Handle exception
         try (Response response = client.newCall(request).execute()) {
+            MediaType contentType = response.body().contentType();
             String content = response.body().string();
 
             // Offisante may answer with something that is not Json at all (gateway error page,
-            // maintenance page). Fail here with the http status and what was actually received,
-            // rather than letting the Json parser report an unusable "Unexpected character ('<')".
-            if (!PayloadUtil.isJsonPayload(content)) {
+            // maintenance page). The response says so itself, so trust its Content-Type rather
+            // than letting the Json parser report an unusable "Unexpected character ('<')".
+            // An answer that declares no Content-Type is left to the Json parser, as before.
+            if (contentType != null && !StringUtils.endsWithIgnoreCase(contentType.subtype(), "json")) {
                 throw new RuntimeException(String.format(
-                        "Offisante returned a non Json response (HTTP %d) for %s : %s",
-                        response.code(), url, PayloadUtil.excerpt(content)
+                        "Offisante returned a %s response (HTTP %d) for %s : %s",
+                        contentType, response.code(), url,
+                        StringUtils.abbreviate(StringUtils.normalizeSpace(content), EXCERPT_MAX_LENGTH)
                 ));
             }
 
